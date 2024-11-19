@@ -49,7 +49,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "BufReadPost",
-    dependencies = { 
+    dependencies = {
       "nvim-tree/nvim-web-devicons",
       "catppuccin/nvim",
     },
@@ -113,5 +113,51 @@ return {
         },
       }
     end
+  },
+
+  -- LSP configuration
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("lspconfig").lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim", "neovim/nvim-lspconfig"
+    },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "pyright" },
+      })
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+      ensure_installed = {
+          "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
+        },
+      highlight = {
+        enable = true,
+      }
   },
 }
