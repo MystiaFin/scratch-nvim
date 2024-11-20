@@ -13,6 +13,6 @@ vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CR>", "$", { noremap = true, silent = true })
 
 -- For tab switching
-vim.keymap.set('n', '<C-Tab>', ':tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<C-S-Tab>', ':tabprevious<CR>', { silent = true })
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 

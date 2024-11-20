@@ -48,44 +48,23 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    event = "BufReadPost",
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "catppuccin/nvim",
+      'nvim-tree/nvim-web-devicons',
+      'catppuccin'
     },
     config = function()
-      local highlights = require("catppuccin.groups.integrations.bufferline").get()
-
       require("bufferline").setup({
         options = {
           mode = "buffers",
           diagnostics = "nvim_lsp",
-          indicator = {
-            icon = "▎",
-          },
-          seperator_style = "slant",
-          show_buffer_close_icons = false,
-          show_close_icon = false,
-          enforce_regular_tabs = true,
-          modified_icon = "●",
-          tab_size = 18,
-          always_show_bufferline = true,
-          hover = {
-            enabled = true,
-            delay = 200,
-            reveal = {"close"}
-          },
-          -- Add offset for nvim-tree
-          offsets = {
-            {
-              filetype = "NvimTree",
-              text = "Elaina my beloved",
-              highlight = "Directory",
-              separator = true,
-            }
-          },
-        },
-        highlights = highlights,
+          separator_style = "slant",
+          offsets = {{
+            filetype = "NvimTree",
+            text = "NvimTree",
+            highlight = "Directory",
+            separator = true
+          }}
+        }
       })
     end
   },
@@ -95,7 +74,32 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require("config.lualine").setup()
+      require("lualine").setup({
+        options = {
+          section_separators = {"", ""},
+          component_separators = {"", ""},
+          icons_enabled = true,
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = {"mode"},
+          lualine_b = {"branch"},
+          lualine_c = {"filename"},
+          lualine_x = {"encoding", "fileformat", "filetype"},
+          lualine_y = {"progress"},
+          lualine_z = {"location"},
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {"filename"},
+          lualine_x = {"location"},
+          lualine_y = {},
+          lualine_z = {},
+        },
+        tabline = {},
+        extensions = {},
+      })
     end
   },
   {

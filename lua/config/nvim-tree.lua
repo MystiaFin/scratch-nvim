@@ -12,6 +12,7 @@ return {
   },
   renderer = {
     group_empty = true,
+    root_folder_modifier= ":t",
     icons = {
       webdev_colors = true,
         show = {
