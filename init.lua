@@ -1,4 +1,6 @@
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/mappings.lua')
+vim.loader.enable()
+vim.o.guicursor = 'n-v-c:block'
 
 -- indentation
 vim.opt.tabstop = 2
@@ -56,3 +58,12 @@ lspconfig.lua_ls.setup {
 
 -- C++
 lspconfig.clangd.setup {}
+
+-- Create undo directory if it doesn't exist
+vim.fn.mkdir(vim.fn.expand('~/.vim/undodir'), 'p')
+
+-- Enable persistent undo
+vim.o.undofile = true
+vim.o.undodir = vim.fn.expand('~/.vim/undodir')
+vim.o.undolevels = 10000
+vim.o.undoreload = 10000

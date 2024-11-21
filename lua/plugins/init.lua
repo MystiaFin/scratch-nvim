@@ -7,6 +7,9 @@ return {
     config = function()
       require("catppuccin").setup({
         transparent_background = true,
+        integrations = {
+          bufferline = true,
+        }
       })
     end
   },
@@ -45,39 +48,16 @@ return {
       })
     end
   },
-  -- bufferline
   {
-    "akinsho/bufferline.nvim",
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      'catppuccin'
-    },
-    config = function()
-      require("bufferline").setup({
-        options = {
-          mode = "buffers",
-          diagnostics = "nvim_lsp",
-          separator_style = "slant",
-          offsets = {{
-            filetype = "NvimTree",
-            text = "NvimTree",
-            highlight = "Directory",
-            separator = true
-          }}
-        }
-      })
-    end
-  },
-  {
-   'nvim-lualine/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require("lualine").setup({
         options = {
-          section_separators = {"", ""},
-          component_separators = {"", ""},
+          section_separators = {"", ""},
+          component_separators = {"", ""},
           icons_enabled = true,
           globalstatus = true,
         },
@@ -157,16 +137,16 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-      ensure_installed = {
-          "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
-        },
-      highlight = {
-        enable = true,
-      }
+    ensure_installed = {
+      "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
+    },
+    highlight = {
+      enable = true,
+    }
   },
   {
-   "github/copilot.vim",
-   event = "VeryLazy"
+    "github/copilot.vim",
+    event = "VeryLazy"
   },
   {
     'nvimdev/dashboard-nvim',
@@ -179,6 +159,6 @@ return {
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
   {
-   "mfussenegger/nvim-dap",
+    "mfussenegger/nvim-dap",
   },
 }
