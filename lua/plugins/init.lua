@@ -59,48 +59,14 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require("lualine").setup({
-        options = {
-          section_separators = {"", ""},
-          component_separators = {"", ""},
-icons_enabled = true,
-          globalstatus = true,
-        },
-        sections = {
-          lualine_a = {"mode"},
-          lualine_b = {"branch"},
-          lualine_c = {"filename"},
-          lualine_x = {"encoding", "fileformat", "filetype"},
-          lualine_y = {"progress"},
-          lualine_z = {"location"},
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {"filename"},
-          lualine_x = {"location"},
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        extensions = {},
-      })
+      require("config.lualine").setup()
     end
   },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require('telescope').setup{
-        defaults = {
-          mappings = {
-          }
-        },
-        pickers = {
-        },
-        extensions = {
-        },
-      }
+      require('telescope').setup()
     end
   },
 
@@ -145,18 +111,7 @@ icons_enabled = true,
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
     config = function()
-      require('nvim-treesitter').setup({
-        ensure_installed = {
-          "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
-        },
-        highlight = {
-          enable = true,
-        },
-        autotag = {
-          enable = true,
-        }
-      })
-      vim.cmd('TSEnable highlight')
+      require('config.treesitter').setup()
     end
 },
   {
@@ -202,32 +157,7 @@ icons_enabled = true,
     'akinsho/bufferline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require("bufferline").setup({
-          options = {
-            mode = "buffers",
-            numbers = "none",
-            themable = true,
-            show_buffer_close_icons = false,
-            show_close_icon = false,
-            separator_style = "thin",
-            diagnostics = "nvim_lsp",
-            offsets = {
-              {
-                filetype = "NvimTree",
-                text = "File Explorer",
-                text_align = "center",
-                separator = true,
-              },
-            },
-            always_show_bufferline = true,
-            -- Add these options for better integration
-            indicator = {
-              style = 'icon',
-            },
-          },
-          -- Remove the custom highlights section since Catppuccin will handle it
-          -- The transparent background will be handled by Catppuccin's integration
-      })
+      require("config.bufferline").setup()
     end
   }
 }
