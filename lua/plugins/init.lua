@@ -63,6 +63,7 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
+    event = "VeryLazy",
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
@@ -81,7 +82,8 @@ return {
   -- LSP configuration
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
+    event = {"BufReadPre", "BufNewFile"},
+    lazy = true,
     config = function()
       require("lspconfig").lua_ls.setup({
         settings = {

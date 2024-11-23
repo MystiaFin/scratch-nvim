@@ -1,6 +1,10 @@
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/mappings.lua')
 vim.loader.enable()
 vim.o.guicursor = 'n-v-c:block'
+vim.opt.synmaxcol = 240
+vim.opt.lazyredraw = true
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 
 -- indentation
