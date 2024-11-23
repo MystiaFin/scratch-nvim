@@ -119,16 +119,6 @@ return {
     event = "InsertEnter",
   },
   {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        --
-      }
-    end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  },
-  {
     "mfussenegger/nvim-dap",
   },
   {
@@ -159,5 +149,87 @@ return {
     config = function()
       require("config.bufferline").setup()
     end
+  },
+  {
+    'neogitorg/neogit',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = true
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    event = "BufRead",
+    config = function()
+      require('gitsigns').setup()
+    end
+  },
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        theme = 'doom',
+        config = {
+          header = {
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+            "⠀⠀⠀⠀⠀⣀⣀⠀⠠⣄⣉⡶⢿⣷⣿⣷⣶⣶⣮⣄⡠⡀⡀⣠⣄⡀⠀⠀⠀⠀",
+            "⠀⠀⠀⣄⡾⣫⢒⢾⣾⣿⢟⢥⣶⣶⣶⣮⣖⠾⡙⢿⣿⣦⡊⡲⣶⣆⠀⠀⠀⠀",
+            "⠀⠀⠀⢬⣾⢣⣳⣿⡿⢑⣵⣿⣿⣷⠹⣿⣿⣿⣮⡳⡝⣿⣿⡔⠙⣿⣇⠀⠀⠀",
+            "⠀⠀⢠⣿⡏⢲⣿⡿⣱⣿⣿⡿⡻⣱⣿⣝⢞⢿⢿⣿⣮⠎⣿⣿⡔⠸⣿⠀⠀⠀",
+            "⠀⠀⡜⣾⠁⣿⣿⢳⡿⡛⠁⠌⢾⣿⣿⣿⣧⠀⠑⢝⢿⣏⠘⣿⣷⠀⣿⡆⠀⠀",
+            "⠀⢀⢻⡟⣷⣿⣿⣈⣼⣾⣿⣮⣹⣿⣿⣿⣿⣾⣿⣮⣳⢝⣴⢻⣿⢸⢹⣧⡆⠀",
+            "⣀⣘⣿⣧⢿⣿⣿⢿⣿⠋⠉⠉⣿⣿⣿⣿⣿⡙⠉⠙⣿⡇⢸⢸⣿⢨⠬⠭⠤⠤",
+            "⢢⣝⢿⣯⡝⢿⡟⣼⣿⣿⣿⣿⣿⣿⡉⢙⣿⣿⣿⣿⣿⡏⢄⣿⡟⢰⣿⡿⡧⠇",
+            "⡄⣎⣵⡙⡧⢏⢷⢑⢻⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⠁⣼⠏⠠⠛⣱⣴⡆⡏",
+            "⣧⣿⣿⣿⣷⡉⠈⠣⢻⣿⣿⣿⣯⣟⣻⣇⣿⣿⣿⣿⡿⢑⠁⠁⢲⣿⣿⣿⣇⣷",
+            "⢸⣿⣿⣿⣿⣇⠀⠀⠈⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠑⠁⠀⠀⢸⣿⣿⣿⣿⣿",
+            "⢸⣿⣿⣿⣿⣿⠀⠀⠀⣀⠀⠈⠹⠛⣻⣛⠻⠉⠀⡀⢸⣀⠀⠀⣸⣿⣿⠿⢨⣿",
+            "⢸⡏⣿⣿⣿⣿⣧⢰⣿⢸⡄⠁⠢⠀⣤⣤⣤⡲⠟⡁⣾⣿⣿⢸⡟⣛⣵⡇⡼⡿",
+            "⢀⣟⠹⠻⣟⣛⢿⣾⢧⢀⣿⡸⢣⢾⣟⢿⢣⣼⣶⣠⣟⣛⣻⣴⡆⣿⣿⢁⠇⣦",
+            "        ",
+            "        ",
+            "        ",
+          },
+        center = {
+            {
+              icon = ' ',
+              icon_hl = 'Title',
+              desc = 'Find File           ',
+              desc_hl = 'String',
+              key = 'f',
+              keymap = 'SPC f f',
+              key_hl = 'Number',
+              action = 'Telescope find_files'
+            },
+            {
+              icon = ' ',
+              icon_hl = 'Title',
+              desc = 'Find Dotfiles',
+              desc_hl = 'String',
+              key = 'd',
+              keymap = 'SPC f d',
+              key_hl = 'Number',
+              action = 'Telescope find_files cwd=~/.config'
+            },
+            {
+              icon = ' ',
+              icon_hl = 'Error',
+              desc = 'Quit Neovim        ',
+              desc_hl = 'String',
+              key = 'q',
+              keymap = '',
+              key_hl = 'Number',
+              action = 'qa'
+            },
+          },
+        }
+      }
+    end,
+    dependencies = { {'nvim-tree/nvim-web-devicons'}}
   }
 }
