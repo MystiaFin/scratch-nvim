@@ -2,6 +2,7 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/mappings.lua')
 vim.loader.enable()
 vim.o.guicursor = 'n-v-c:block'
 
+
 -- indentation
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

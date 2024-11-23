@@ -6,17 +6,22 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        transparent_background = true,
-        integrations = {
-          bufferline = true,
-        }
-      })
+          transparent_background = true,
+          integrations = {
+            bufferline = true,
+          },
+          color_overrides = {
+            -- You can customize colors here if needed
+          },
+        })
+        -- Set colorscheme after setup
+        vim.cmd.colorscheme "catppuccin"
     end
   },
   -- auto close
   {
     "m4xshen/autoclose.nvim",
-    event = "VeryLazy",
+    event = {"InsertEnter"},
   },
   {
     "nvim-tree/nvim-web-devicons",
@@ -58,7 +63,7 @@ return {
         options = {
           section_separators = {"", ""},
           component_separators = {"", ""},
-          icons_enabled = true,
+icons_enabled = true,
           globalstatus = true,
         },
         sections = {
@@ -102,6 +107,7 @@ return {
   -- LSP configuration
   {
     "neovim/nvim-lspconfig",
+    event = "BufReadPre",
     config = function()
       require("lspconfig").lua_ls.setup({
         settings = {
@@ -135,18 +141,27 @@ return {
       })
     end,
   },
-  {
+{
     "nvim-treesitter/nvim-treesitter",
-    ensure_installed = {
-      "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
-    },
-    highlight = {
-      enable = true,
-    }
-  },
+    event = "BufRead",
+    config = function()
+      require('nvim-treesitter').setup({
+        ensure_installed = {
+          "lua", "python", "rust", "html", "css", "javascript", "typescript", "tsx", "c", "cpp", "java"
+        },
+        highlight = {
+          enable = true,
+        },
+        autotag = {
+          enable = true,
+        }
+      })
+      vim.cmd('TSEnable highlight')
+    end
+},
   {
     "github/copilot.vim",
-    event = "VeryLazy"
+    event = "InsertEnter",
   },
   {
     'nvimdev/dashboard-nvim',
@@ -161,4 +176,58 @@ return {
   {
     "mfussenegger/nvim-dap",
   },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "BufRead",
+    config = function()
+      require('nvim-ts-autotag').setup({
+        opts = {
+          enable = true,
+          enable_rename = true,
+          enable_close = true,
+          enable_close_on_slash = true,
+        },
+        per_filetype = {
+          ["html"] = {
+            enable_close = true
+          },
+          ["jsx"] = {
+            enable_close = true
+          }
+        }
+      })
+    end
+  },
+  {
+    'akinsho/bufferline.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("bufferline").setup({
+          options = {
+            mode = "buffers",
+            numbers = "none",
+            themable = true,
+            show_buffer_close_icons = false,
+            show_close_icon = false,
+            separator_style = "thin",
+            diagnostics = "nvim_lsp",
+            offsets = {
+              {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                text_align = "center",
+                separator = true,
+              },
+            },
+            always_show_bufferline = true,
+            -- Add these options for better integration
+            indicator = {
+              style = 'icon',
+            },
+          },
+          -- Remove the custom highlights section since Catppuccin will handle it
+          -- The transparent background will be handled by Catppuccin's integration
+      })
+    end
+  }
 }
