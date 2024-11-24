@@ -8,22 +8,22 @@ return {
     end,
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
+{
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-          transparent_background = true,
-          integrations = {
-            bufferline = true,
-          },
-          color_overrides = {
-            -- You can customize colors here if needed
-          },
-        })
-        -- Set colorscheme after setup
-        vim.cmd.colorscheme "catppuccin"
+      require("gruvbox").setup({
+        transparent_mode = true,
+        contrast = "hard", -- can be "hard", "soft" or empty string
+        palette_overrides = {
+          -- You can override specific color values if needed
+        },
+        overrides = {
+          -- Custom highlights can go here
+        },
+      })
+      -- Set colorscheme after setup
+      vim.cmd.colorscheme "gruvbox"
     end
   },
   -- auto close
@@ -68,8 +68,8 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require("config.lualine").setup()
-    end
+    require('config.lualine').setup()
+end
   },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',

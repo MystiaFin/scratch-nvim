@@ -4,10 +4,16 @@ function M.setup()
     -- Setup configuration
     require('lualine').setup({
         options = {
+          theme = "gruvbox",
           section_separators = {"", ""},
           component_separators = {"", ""},
 icons_enabled = true,
-          globalstatus = true,
+          globalstatus = false,
+          disabled_filetypes = {
+            "NvimTree",
+            "packer",
+          },
+
         },
         sections = {
           lualine_a = {"mode"},

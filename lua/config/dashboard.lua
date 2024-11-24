@@ -51,7 +51,7 @@ function M.setup()
         },
         {
           icon = ' ',
-          icon_hl = 'Error',
+          icon_hl = 'Title',
           desc = 'Quit Neovim        ',
           desc_hl = 'String',
           key = 'q',
