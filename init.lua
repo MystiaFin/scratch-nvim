@@ -146,3 +146,5 @@ vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -8,7 +8,7 @@ return {
     end,
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
-{
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
@@ -177,24 +177,31 @@ end
       require('gitsigns').setup()
     end
   },
-{
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2", -- Specify the correct branch
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
-    require("harpoon").setup({
-      menu = {
-        width = vim.api.nvim_win_get_width(0) - 4, -- Adjust menu width as needed
-      },
-      global_settings = {
-        save_on_toggle = true,
-        save_on_change = true,
-        enter_on_sendcmd = false,
-        tmux_autoclose_windows = false,
-        excluded_filetypes = { "harpoon" },
-        mark_branch = false,
-      },
-    })
-  end
-}
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2", -- Specify the correct branch
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("harpoon").setup({
+        menu = {
+          width = vim.api.nvim_win_get_width(0) - 4, -- Adjust menu width as needed
+        },
+        global_settings = {
+          save_on_toggle = true,
+          save_on_change = true,
+          enter_on_sendcmd = false,
+          tmux_autoclose_windows = false,
+          excluded_filetypes = { "harpoon" },
+          mark_branch = false,
+        },
+      })
+    end
+  },
+  {
+    'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup()
+    end
+  }
 }
