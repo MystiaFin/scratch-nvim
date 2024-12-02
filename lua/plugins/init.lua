@@ -14,7 +14,7 @@ return {
     config = function()
       require("gruvbox").setup({
         transparent_mode = true,
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        contrast = "soft", -- can be "hard", "soft" or empty string
         palette_overrides = {
           -- You can override specific color values if needed
         },
@@ -184,15 +184,17 @@ end
     config = function()
       require("harpoon").setup({
         menu = {
-          width = vim.api.nvim_win_get_width(0) - 4, -- Adjust menu width as needed
+          width = vim.api.nvim_win_get_width(0) - 4,
         },
+        -- Use relative paths
         global_settings = {
-          save_on_toggle = true,
+          save_on_toggle = false,
           save_on_change = true,
           enter_on_sendcmd = false,
           tmux_autoclose_windows = false,
           excluded_filetypes = { "harpoon" },
           mark_branch = false,
+          use_relative_path = true, -- Force relative paths
         },
       })
     end

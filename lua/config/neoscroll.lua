@@ -15,8 +15,8 @@ function M.setup()
     -- Setup keymaps
     local neoscroll = require('neoscroll')
     local keymap = {
-        ["<C-k>"] = function() neoscroll.ctrl_u({ duration = 150 }) end,
-        ["<C-j>"] = function() neoscroll.ctrl_d({ duration = 150 }) end,
+        ["<C-k>"] = function() neoscroll.ctrl_u({ duration = 100 }) end,
+        ["<C-j>"] = function() neoscroll.ctrl_d({ duration = 100 }) end,
     }
     local modes = { 'n', 'v', 'x' }
     for key, func in pairs(keymap) do
