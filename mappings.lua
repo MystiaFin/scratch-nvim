@@ -13,3 +13,6 @@ vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w', ':bd<CR>', { noremap = true, silent = true })
+
+-- Dismiss message
+vim.keymap.set('n', '<leader>l', '<cmd>NoiceDismiss<CR>')
