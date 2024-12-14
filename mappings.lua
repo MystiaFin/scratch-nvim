@@ -16,3 +16,8 @@ vim.keymap.set('n', '<leader>w', ':bd<CR>', { noremap = true, silent = true })
 
 -- Dismiss message
 vim.keymap.set('n', '<leader>l', '<cmd>NoiceDismiss<CR>')
+vim.keymap.set("n", '<leader>gg', '<cmd>CopilotChatToggle<CR>')
+vim.keymap.set("n", '<leader>gs', '<cmd>CopilotChatSave<CR>')
+vim.keymap.set("n", '<leader>gl', '<cmd>CopilotChatLoad<CR>')
+vim.keymap.set("n", '<leader>gm', '<cmd>CopilotChatModels<CR>')
+vim.keymap.set("n", '<leader>gr', '<cmd>CopilotChatReset<CR>')

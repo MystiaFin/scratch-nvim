@@ -165,3 +165,5 @@ require("noice").setup({
     lsp_doc_border = false,
   },
 })
+
+vim.g.gruvbox_baby_transparent_mode = true

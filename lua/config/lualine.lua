@@ -4,7 +4,7 @@ function M.setup()
     -- Setup configuration
     require('lualine').setup({
         options = {
-          theme = "gruvbox",
+          theme = "catppuccin",
           section_separators = {"", ""},
           component_separators = {"", ""},
 icons_enabled = true,

@@ -9,21 +9,21 @@ return {
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      require("gruvbox").setup({
-        transparent_mode = true,
-        contrast = "soft", -- can be "hard", "soft" or empty string
-        palette_overrides = {
-          -- You can override specific color values if needed
-        },
-        overrides = {
-          -- Custom highlights can go here
-        },
-      })
-      -- Set colorscheme after setup
-      vim.cmd.colorscheme "gruvbox"
+      require("catppuccin").setup({
+          transparent_background = true,
+          integrations = {
+            bufferline = true,
+          },
+          color_overrides = {
+            -- You can customize colors here if needed
+          },
+        })
+        -- Set colorscheme after setup
+        vim.cmd.colorscheme "catppuccin"
     end
   },
   -- auto close
@@ -129,7 +129,16 @@ end
 },
   {
     "github/copilot.vim",
-    event = "InsertEnter",
+    event = "VeryLazy",
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    opts = {
+    },
   },
   {
     "mfussenegger/nvim-dap",
@@ -216,6 +225,46 @@ end
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
+      }
+  },
+  {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
+    {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
+  {
+      "kdheepak/lazygit.nvim",
+      lazy = false,
+      cmd = {
+          "LazyGit",
+          "LazyGitConfig",
+          "LazyGitCurrentFile",
+          "LazyGitFilter",
+          "LazyGitFilterCurrentFile",
+      },
+      -- optional for floating window border decoration
+      dependencies = {
+          "nvim-telescope/telescope.nvim",
+          "nvim-lua/plenary.nvim",
+      },
+      config = function()
+          require("telescope").load_extension("lazygit")
+      end,
+      keys = {
+          { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
       }
   }
 }
