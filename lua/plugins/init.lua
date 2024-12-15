@@ -1,5 +1,4 @@
 return {
-	-- theme
 	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
@@ -19,15 +18,10 @@ return {
 				integrations = {
 					bufferline = true,
 				},
-				color_overrides = {
-					-- You can customize colors here if needed
-				},
 			})
-			-- Set colorscheme after setup
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	-- auto close
 	{
 		"m4xshen/autoclose.nvim",
 		event = { "InsertEnter" },
@@ -43,7 +37,6 @@ return {
 			require("nvim-tree").setup(require("config.nvim-tree"))
 		end,
 	},
-	-- smooth scroll
 	{
 		"karb94/neoscroll.nvim",
 		event = "BufReadPost",
@@ -51,7 +44,6 @@ return {
 			require("config.neoscroll").setup()
 		end,
 	},
-	-- Discord presence
 	{
 		"andweeb/presence.nvim",
 		event = "VeryLazy",
@@ -84,7 +76,6 @@ return {
 		end,
 	},
 
-	-- LSP configuration
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
@@ -140,7 +131,6 @@ return {
 			{ "github/copilot.vim" },
 			{ "nvim-lua/plenary.nvim" },
 		},
-		opts = {},
 	},
 	{
 		"mfussenegger/nvim-dap",
@@ -197,7 +187,6 @@ return {
 				menu = {
 					width = vim.api.nvim_win_get_width(0) - 4,
 				},
-				-- Use relative paths
 				global_settings = {
 					save_on_toggle = false,
 					save_on_change = true,
@@ -205,7 +194,7 @@ return {
 					tmux_autoclose_windows = false,
 					excluded_filetypes = { "harpoon" },
 					mark_branch = false,
-					use_relative_path = true, -- Force relative paths
+					use_relative_path = true,
 				},
 			})
 		end,
@@ -225,13 +214,9 @@ return {
 			})
 		end,
 	},
-	-- lazy.nvim
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -240,11 +225,6 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
 		keys = {
 			{
 				"<leader>?",
@@ -265,7 +245,6 @@ return {
 			"LazyGitFilter",
 			"LazyGitFilterCurrentFile",
 		},
-		-- optional for floating window border decoration
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/plenary.nvim",
