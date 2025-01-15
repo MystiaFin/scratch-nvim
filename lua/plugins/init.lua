@@ -125,13 +125,16 @@ return {
 		"github/copilot.vim",
 		event = "VeryLazy",
 	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "github/copilot.vim" },
-			{ "nvim-lua/plenary.nvim" },
-		},
-	},
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+    },
+  },
 	{
 		"mfussenegger/nvim-dap",
 	},
