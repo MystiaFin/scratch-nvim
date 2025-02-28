@@ -1,6 +1,4 @@
-
 vim.g.mapleader = " " -- Set the leader key to space
-
 
 -- Toggle NvimTree with <leader>e
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
@@ -21,3 +19,4 @@ vim.keymap.set("n", '<leader>gs', '<cmd>CopilotChatSave<CR>')
 vim.keymap.set("n", '<leader>gl', '<cmd>CopilotChatLoad<CR>')
 vim.keymap.set("n", '<leader>gm', '<cmd>CopilotChatModels<CR>')
 vim.keymap.set("n", '<leader>gr', '<cmd>CopilotChatReset<CR>')
+
