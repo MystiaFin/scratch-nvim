@@ -1,18 +1,7 @@
 vim.cmd("source " .. vim.fn.stdpath("config") .. "/mappings.lua")
+vim.cmd("source " .. vim.fn.stdpath("config") .. "/indentation.lua")
 -- setup lazy
 require("config.lazy")
-
--- indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-
-vim.wo.relativenumber = true
-vim.opt.number = true
-vim.opt.clipboard = "unnamed"
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
 
 vim.opt.termguicolors = true
 require("bufferline").setup{}
