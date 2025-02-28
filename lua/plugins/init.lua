@@ -125,16 +125,15 @@ return {
 		"github/copilot.vim",
 		event = "VeryLazy",
 	},
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-    },
-  },
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			{ "nvim-lua/plenary.nvim", branch = "master" },
+		},
+		build = "make tiktoken", -- Only on MacOS or Linux
+		opts = {},
+	},
 	{
 		"mfussenegger/nvim-dap",
 	},
@@ -282,6 +281,19 @@ return {
 					java = { "google-java-format" },
 				},
 			})
+		end,
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			"saadparwaiz1/cmp_luasnip",
+		},
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("config.cmp")
 		end,
 	},
 }
